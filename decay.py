@@ -1,14 +1,26 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-n_0 = 6.023 # initial amount of active substance
-decay_const = 1.216 # per year
-t = np.linspace(0,57000,500) # carbon 14 half life ~5700 yrs
-n = n_0*np.exp(-decay_const*t)
+# initial amount of active substance, same for all in this scenario:
+n_0 = 6.023e23
+
+# Radioactive decay constants (1/y) for each element:
+decay_u238 = 1.54e-10
+decay_u235 = 9.72e-10
+
+t = np.linspace(0,1e10,500) # years
+
+# Remnants after a certain time (t):
+n2 = n_0 * np.exp(-decay_u238 * t)
+n3 = n_0 * np.exp(-decay_u235 * t)
 
 fig, ax = plt.subplots()
-ax.plt(t,n)
-plt.title("Radioactive Decay of Carbon-14")
+
+ax.plot(t, n2, label="U-238")
+ax.plot(t, n3, label="U-235")
+ax.legend()
+
+plt.title("Radioactive Decay of Uranium")
 plt.xlabel("time (years)")
 plt.ylabel("No. of atoms present (x$10^{23}$)")
 plt.show()
