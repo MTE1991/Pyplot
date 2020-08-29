@@ -8,7 +8,7 @@ n_0 = 6.023e23
 decay_u238 = 1.54e-10
 decay_u235 = 9.72e-10
 
-t = np.linspace(0,1e10,500) # years
+t = np.linspace(0,3e10,500) # years
 
 # Remnants after a certain time (t):
 n2 = n_0 * np.exp(-decay_u238 * t)
